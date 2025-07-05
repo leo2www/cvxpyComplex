@@ -120,6 +120,24 @@ def is_sparse(constant) -> bool:
 
 
 def shape(constant):
+    """
+    Determine the shape of a constant value. 
+    
+    Parameters
+    ----------
+    constant : any
+        Support scale, vector in list, matrix in list and INTERFACE type(np or scipy), 
+        sparse matrix will be CSC format.
+    Returns
+    -------
+    tuple
+        The shape of the input as a tuple. Returns an empty tuple for scalars, a single-element tuple
+        for vectors, and a two-element tuple for matrices.
+    Raises
+    ------
+    TypeError
+        If the input type is not supported as a constant value.
+    """
     if isinstance(constant, numbers.Number) or np.isscalar(constant):
         return tuple()
     elif isinstance(constant, list):
